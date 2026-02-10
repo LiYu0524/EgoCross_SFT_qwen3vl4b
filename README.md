@@ -4,8 +4,13 @@ Fine-tuning Vision-Language Models on egocentric video understanding tasks acros
 
 ## 📦 Resources
 
-### Dataset
+### Support Set (with answers, for training)
 - **ModelScope**: [EgoCross_support_set](https://modelscope.cn/datasets/YuLi2024/EgoCross_support_set)
+
+### Test Set (questions only, no answers, for evaluation)
+- **HuggingFace**: [EgoCross](https://huggingface.co/datasets/myuniverse/EgoCross)
+
+> **Note**: The test set contains only questions without ground-truth answers, intended for benchmark evaluation.
 
 ### Pre-trained Models (Full SFT, Epoch 2)
 | Domain | ModelScope Link |
