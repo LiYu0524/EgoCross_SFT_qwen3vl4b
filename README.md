@@ -2,17 +2,20 @@
 
 Fine-tuning Vision-Language Models on egocentric video understanding tasks across multiple domains.
 
-## 📊 Dataset
+## 📦 Resources
 
-Download the training data from HuggingFace:
-```bash
-# TODO: Update with actual HuggingFace repo
-huggingface-cli download YOUR_USERNAME/egocross-data --local-dir ./data
-```
+### Dataset
+- **ModelScope**: [EgoCross_support_set](https://modelscope.cn/datasets/YuLi2024/EgoCross_support_set)
 
-Or manually download from: [HuggingFace Dataset Link]
+### Pre-trained Models (Full SFT, Epoch 2)
+| Domain | ModelScope Link |
+|--------|-----------------|
+| Animal | [EgoCross_sft_qwen3vl4B_animal](https://modelscope.cn/models/YuLi2024/EgoCross_sft_qwen3vl4B_animal) |
+| Industry | [EgoCross_sft_qwen3vl4B_industry](https://modelscope.cn/models/YuLi2024/EgoCross_sft_qwen3vl4B_industry) |
+| XSports | [EgoCross_sft_qwen3vl4B_xsports](https://modelscope.cn/models/YuLi2024/EgoCross_sft_qwen3vl4B_xsports) |
+| Surgery | [EgoCross_sft_qwen3vl4B_surgery](https://modelscope.cn/models/YuLi2024/EgoCross_sft_qwen3vl4B_surgery) |
 
-### Dataset Statistics
+## 📊 Dataset Statistics
 
 | Domain | Source | Samples | Frames | Description |
 |--------|--------|---------|--------|-------------|
@@ -36,8 +39,11 @@ pip install transformers>=4.57.0 qwen-vl-utils
 ### 2. Download Dataset
 
 ```bash
-# Download from HuggingFace
-huggingface-cli download YOUR_USERNAME/egocross-data --local-dir ./data
+# Install modelscope
+pip install modelscope
+
+# Download dataset
+modelscope download --dataset YuLi2024/EgoCross_support_set --local_dir ./data
 ```
 
 ### 3. Prepare Data
@@ -58,6 +64,13 @@ FORCE_TORCHRUN=1 NNODES=1 NPROC_PER_NODE=4 \
 llamafactory-cli train configs/lora.yaml
 ```
 
+### 5. Download Pre-trained Models (Optional)
+
+```bash
+# Download a pre-trained model
+modelscope download --model YuLi2024/EgoCross_sft_qwen3vl4B_surgery --local_dir ./models/surgery
+```
+
 ## 📁 Repository Structure
 
 ```
@@ -67,9 +80,8 @@ egocross/
 │   ├── full_sft.yaml       # Full fine-tuning config
 │   └── lora.yaml           # LoRA config
 ├── scripts/
-│   ├── prepare_data.py     # Convert paths to absolute
-│   └── evaluate.py         # Evaluation script
-└── data/                   # Download from HuggingFace
+│   └── prepare_data.py     # Convert paths to absolute
+└── data/                   # Download from ModelScope
     ├── dataset_info.json
     ├── train.json
     └── frames/
