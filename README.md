@@ -4,7 +4,7 @@ Fine-tuning Vision-Language Models on egocentric video understanding tasks acros
 
 ---
 
-## 🏆 EgoVis Challenge @ CVPR 2025
+## 🏆 EgoVis Challenge @ CVPR 2026
 
 We are excited to announce that **EgoCross** is featured in the **EgoVis Challenge**!
 
